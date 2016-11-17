@@ -35,6 +35,9 @@
 (spacemacs/set-leader-keys "bmd" 'bookmark-delete)
 (spacemacs/set-leader-keys "bmj" 'counsel-bookmark)
 
+;; buffer list
+(spacemacs/set-leader-keys "bl" 'ibuffer-list-buffers)
+
 ;; ivy specific keybindings
 (if (configuration-layer/layer-usedp 'ivy)
     (progn
@@ -46,8 +49,3 @@
 ;; flycheck error
 (spacemacs/set-leader-keys "en" 'flycheck-next-error)
 (spacemacs/set-leader-keys "ep" 'flycheck-previous-error)
-
-;; auto-complete 补全选择
-(define-key ac-menu-map (kbd "C-n") 'ac-next)
-(define-key ac-menu-map (kbd "C-p") 'ac-previous)
-(define-key ac-menu-map (kbd "C-s") 'ac-isearch)
