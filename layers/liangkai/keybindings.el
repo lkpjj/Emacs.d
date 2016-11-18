@@ -22,6 +22,9 @@
 
 (define-key global-map (kbd "C-c y") 'youdao-dictionary-search-at-point+)
 (define-key global-map (kbd "s-l") 'goto-line)
+(define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
+(define-key evil-motion-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
+
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "<f5>") 'run-current-file)
