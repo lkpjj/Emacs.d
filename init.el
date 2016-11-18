@@ -9,6 +9,7 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     rust
      (go :variables go-tab-width 4
          gofmt-command "goimports")
      ivy
@@ -39,7 +40,8 @@
             c-c++-default-mode-for-headers 'c++-mode)
      (chinese :packages youdao-dictionary fcitx
               :variables chinese-enable-fcitx nil
-              chinese-enable-youdao-dict t)
+              chinese-enable-youdao-dict t
+              )
      liangkai
      )
    dotspacemacs-additional-packages '()
@@ -52,13 +54,15 @@
                                                    org-bullets smooth-scrolling org-repo-todo org-download org-timer
                                                    livid-mode git-gutter git-gutter-fringe  evil-escape
                                                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
-                                                   ac-ispell ace-jump-mode auto-complete auto-dictionary
+                                                   ac-ispell ace-jump-mode auto-dictionary
                                                    clang-format define-word google-translate disaster epic
                                                    fancy-battery neotree org-present orgit orglue spacemacs-theme
                                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
                                                    helm-c-yasnippet ace-jump-helm-line helm-make
                                                    helm-themes helm-swoop helm-spacemacs-help smeargle
-                                                   ido-vertical-mode flx-ido company-quickhelp)
+                                                   ido-vertical-mode flx-ido company-quickhelp
+                                                   auto-complete
+                                                   )
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
