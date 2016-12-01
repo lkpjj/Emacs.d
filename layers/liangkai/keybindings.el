@@ -2,8 +2,8 @@
 ;;
 ;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
 ;;
-;; Author: liangkai <liangkai@MacBookPro>
-;; URL: https://github.com/syl20bnr/spacemacs
+;; Author: liangkai <kevin.scnu@gmail.com>
+;; URL: https://github.com/lkpjj/spacemacs.d
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -20,26 +20,32 @@
 (define-key 'help-command (kbd "C-i") 'info-display-manual)
 
 
+;; evil keybindings
+(define-key evil-normal-state-map (kbd ",q") 'evil-quit)
+
 (define-key global-map (kbd "C-c y") 'youdao-dictionary-search-at-point+)
 (define-key global-map (kbd "s-l") 'goto-line)
+
 (define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (define-key evil-motion-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
-
+(define-key evil-normal-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "<f5>") 'run-current-file)
 
-;;Must set key to nil to prevent error: Key sequence b m s starts with non-prefix key b m
-(spacemacs/set-leader-keys "bm" nil)
-(spacemacs/set-leader-keys "bD" 'spacemacs/kill-other-buffers)
-(spacemacs/declare-prefix "bm" "Bookmark")
-(spacemacs/set-leader-keys "bms" 'bookmark-set)
-(spacemacs/set-leader-keys "bmr" 'bookmark-rename)
-(spacemacs/set-leader-keys "bmd" 'bookmark-delete)
-(spacemacs/set-leader-keys "bmj" 'counsel-bookmark)
-
-;; buffer list
+;; 自定义按键
+;; buffer 相关
+(spacemacs/set-leader-keys "bm" 'spacemacs/kill-other-buffers)
 (spacemacs/set-leader-keys "bl" 'ibuffer-list-buffers)
+;; 书签相关
+;;Must set key to nil to prevent error: Key sequence b m s starts with non-prefix key b m
+(spacemacs/set-leader-keys "fb" nil)
+(spacemacs/declare-prefix "fb" "bookmark")
+(spacemacs/set-leader-keys "fbs" 'bookmark-set)
+(spacemacs/set-leader-keys "fbr" 'bookmark-rename)
+(spacemacs/set-leader-keys "fbd" 'bookmark-delete)
+(spacemacs/set-leader-keys "fbj" 'counsel-bookmark)
+(spacemacs/set-leader-keys "fbl" 'bookmark-bmenu-list)
 
 ;; ivy specific keybindings
 (if (configuration-layer/layer-usedp 'ivy)

@@ -3,7 +3,7 @@
 ;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
 ;;
 ;; Author: liangkai <kevin.scnu@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
+;; URL: https://github.com/lkpjj/spacemacs.d
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -12,13 +12,20 @@
 ;;; Commentary:
 
 (when (spacemacs/window-system-is-mac)
-  (setq ns-pop-up-frames nil))
+     (setq ns-pop-up-frames nil))
+
+(setq default-directory "/Users/liangkai/Code/gopath/src")
+
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
+
+(setq gc-cons-threshold 100000000)
 
 (global-prettify-symbols-mode 1)
 
 (setq-default fill-column 80)
-
+(setq ns-pop-up-frames nil)
 (setq user-mail-address "kevin.scnu@gmail.com")
+(setq user-full-name "liangkai")
 
 (setq recenter-positions '(top middle bottom))
 ;; delete the selection with a key press
@@ -60,11 +67,6 @@
 
 (setq url-show-status nil)
 
-;;Don't ask me when close emacs with process is running
-(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
-
 ;;Don't ask me when kill process buffer
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
@@ -91,6 +93,5 @@
 ;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 (show-paren-mode t)
-
 
 ;;; config.el ends here
