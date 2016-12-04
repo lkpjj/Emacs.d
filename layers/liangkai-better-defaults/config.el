@@ -16,6 +16,11 @@
 
 (setq default-directory "/Users/liangkai/Code/gopath/src")
 
+;; remove ^ character when use M-x
+(setq ivy-initial-inputs-alist nil)
+;; fullframe when use magit
+(setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 
 (setq gc-cons-threshold 100000000)

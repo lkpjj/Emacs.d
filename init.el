@@ -50,7 +50,7 @@
                         layouts-autosave-delay 300)
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
-                      ;; auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t
                       :disabled-for org markdown)
      (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
@@ -61,39 +61,33 @@
      )
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '(magit-gh-pulls magit-gitflow
-                                                   ;; ui
-                                                   spaceline volatile-highlights smartparens rainbow-delimiters
-                                                   highlight-indentation spacemacs-theme
-                                                   ;; evil
-                                                   evil-args evil-ediff evil-exchange evil-unimpaired evil-indent-plus evil-mc
-                                                   evil-escape evil-lisp-state
-                                                   ;; org
-                                                   org-bullets org-projectile smooth-scrolling org-repo-todo org-download org-timer
-                                                   ;; git
-                                                   git-gutter git-gutter-fringe
-                                                   ;; mode
-                                                   ;; other
-                                                   ace-jump-mode ido-vertical-mode clean-aindent-mode
-                                                   ac-ispell  smeargle  google-translate gh-md eyebrowse fancy-battery flx-ido disaster lorem-ipsum
-                                                   clang-format neotree org-present orgit orglue
-                                                   ;; helm
-                                                   helm-flyspell flyspell-correct-helm helm-c-yasnippet ace-jump-helm-line helm-make
-                                                   helm-themes helm-swoop helm-spacemacs-help helm-dash
-                                                   ;; completion
-                                                   auto-complete company-quickhelp auto-dictionary
-                                                   ;; shell layer
-                                                   multi-term term xterm-color vi-tilde-fringe
-                                                   spacemacs-purpose-popwin
-                                                   ;;ivy-purpose helm-purpose spacemacs-purpose-popwin
-                                                   )
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-excluded-packages
+   '(magit-gh-pulls magit-gitflow org-projectile evil-mc
+                    evil-args evil-ediff evil-exchange evil-unimpaired
+                    evil-indent-plus volatile-highlights smartparens
+                    spaceline holy-mode skewer-mode rainbow-delimiters
+                    highlight-indentation vi-tilde-fringe eyebrowse
+                    org-bullets smooth-scrolling org-repo-todo org-download org-timer
+                    livid-mode git-gutter git-gutter-fringe  evil-escape
+                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
+                    ac-ispell ace-jump-mode auto-complete auto-dictionary
+                    clang-format define-word google-translate disaster epic
+                    fancy-battery neotree org-present orgit orglue spacemacs-theme
+                    helm-flyspell flyspell-correct-helm clean-aindent-mode
+                    helm-c-yasnippet ace-jump-helm-line helm-make
+                    helm-themes helm-swoop helm-spacemacs-help smeargle
+                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+                    tern
+                    )
+   dotspacemacs-install-packages 'used-only
+   dotspacemacs-delete-orphan-packages t))
 
 (defun dotspacemacs/init ()
   (setq-default
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
-   dotspacemacs-check-for-update t
+   dotspacemacs-check-for-update nil
    dotspacemacs-elpa-subdirectory nil
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
@@ -102,7 +96,9 @@
                                 (projects . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(solarized-dark)
+   dotspacemacs-themes '(
+                         solarized-dark
+                         )
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Monaco"
                                :size 14
@@ -160,8 +156,15 @@
         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-          ("melpa"    . "https://melpa.org/packages/")))
+          ;; ("melpa"    . "https://melpa.org/packages/")
+          ))
   (setq warning-minimum-level :error)
+  ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  ;; (setq tramp-mode nil)
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  ;; hack for remove purpose mode
+  (setq purpose-mode nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -171,10 +174,10 @@
   (fset 'evil-visual-update-x-selection 'ignore)
   ;; force horizontal split window
   (setq split-width-threshold 120)
+
   (linum-relative-on)
-
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (spacemacs|add-company-hook 'text-mode)
-
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
 
