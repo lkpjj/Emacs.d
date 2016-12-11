@@ -9,6 +9,8 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     vimscript
+     shell-scripts
      javascript
      rust
      ivy
@@ -152,12 +154,12 @@
    ))
 
 (defun dotspacemacs/user-init ()
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-          ;; ("melpa"    . "https://melpa.org/packages/")
-          ))
+  ;; (setq configuration-layer--elpa-archives
+  ;;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+  ;;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+  ;;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
+  ;;         ("melpa"    . "https://melpa.org/packages/")
+  ;;         ))
   (setq warning-minimum-level :error)
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   ;; (setq tramp-mode nil)
@@ -233,3 +235,9 @@
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+)

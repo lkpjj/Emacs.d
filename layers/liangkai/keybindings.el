@@ -38,14 +38,14 @@
 (spacemacs/set-leader-keys "bm" 'spacemacs/kill-other-buffers)
 (spacemacs/set-leader-keys "bl" 'ibuffer-list-buffers)
 ;; 书签相关
-;;Must set key to nil to prevent error: Key sequence b m s starts with non-prefix key b m
-(spacemacs/set-leader-keys "fb" nil)
-(spacemacs/declare-prefix "fb" "bookmark")
-(spacemacs/set-leader-keys "fbs" 'bookmark-set)
-(spacemacs/set-leader-keys "fbr" 'bookmark-rename)
-(spacemacs/set-leader-keys "fbd" 'bookmark-delete)
-(spacemacs/set-leader-keys "fbj" 'counsel-bookmark)
-(spacemacs/set-leader-keys "fbl" 'bookmark-bmenu-list)
+;;Must set key to nil to prevent error: Key sequence o b s starts with non-prefix key o b
+(spacemacs/set-leader-keys "ob" nil)
+(spacemacs/declare-prefix "ob" "bookmark")
+(spacemacs/set-leader-keys "obs" 'bookmark-set)
+(spacemacs/set-leader-keys "obr" 'bookmark-rename)
+(spacemacs/set-leader-keys "obd" 'bookmark-delete)
+(spacemacs/set-leader-keys "obj" 'counsel-bookmark)
+(spacemacs/set-leader-keys "obl" 'bookmark-bmenu-list)
 
 ;; ivy specific keybindings
 (if (configuration-layer/layer-usedp 'ivy)
