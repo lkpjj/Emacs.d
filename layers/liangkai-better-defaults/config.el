@@ -25,7 +25,7 @@
 
 (setq gc-cons-threshold 100000000)
 
-(global-prettify-symbols-mode 1)
+;; (global-prettify-symbols-mode 1)
 
 (setq-default fill-column 80)
 (setq ns-pop-up-frames nil)

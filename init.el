@@ -169,6 +169,8 @@
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   ;; hack for remove purpose mode
   (setq purpose-mode nil)
+  ;; disable goto-address-mode in go-mode
+  (add-hook 'go-mode-hook (lambda () (goto-address-mode -1)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -204,7 +206,6 @@
         (set-auto-mode)
       (fundamental-mode)))
   (spacemacs/set-leader-keys "otm" 'toggle-major-mode)
-
 
   (defun spacemacs/ivy-persp-switch-project (arg)
     (interactive "P")
