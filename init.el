@@ -14,7 +14,7 @@
      shell-scripts
      javascript
      rust
-     ivy
+     helm
      emacs-lisp
      markdown
      org
@@ -76,11 +76,12 @@
                     ac-ispell ace-jump-mode auto-complete auto-dictionary
                     clang-format define-word google-translate disaster epic
                     fancy-battery neotree org-present orgit orglue spacemacs-theme
-                    helm-flyspell flyspell-correct-helm clean-aindent-mode
-                    helm-c-yasnippet ace-jump-helm-line helm-make
-                    helm-themes helm-swoop helm-spacemacs-help smeargle
+                    ;; helm-flyspell flyspell-correct-helm
+                    clean-aindent-mode smeargle
+                    ;; helm-c-yasnippet ace-jump-helm-line helm-make
+                    ;; helm-themes helm-swoop helm-spacemacs-help helm-purpose
                     ido-vertical-mode flx-ido company-quickhelp counsel-projectile
-                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+                    window-purpose ivy-purpose spacemacs-purpose-popwin
                     tern
                     )
    dotspacemacs-install-packages 'used-only
@@ -183,7 +184,7 @@
 
   (linum-relative-on)
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (spacemacs|add-company-hook 'text-mode)
+  ;; (spacemacs|add-company-hook 'text-mode)
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
 
@@ -193,7 +194,6 @@
   (spacemacs|diminish ggtags-mode)
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-  (spacemacs|diminish counsel-mode)
 
   (evilified-state-evilify-map special-mode-map :mode special-mode)
 
