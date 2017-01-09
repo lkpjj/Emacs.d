@@ -13,10 +13,10 @@
 
 ;;; Code:
 
-;; (which-function-mode)
+(which-function-mode)
 ;; when editing js file, this feature is very useful
-;; (setq-default header-line-format
-              ;; '((which-func-mode ("" which-func-format " "))))
+(setq-default header-line-format
+              '((which-func-mode ("" which-func-format " "))))
 
 ;; more useful frame title, that show either a file or a
 ;; buffer name (if the buffer isn't visiting a file)
@@ -29,7 +29,7 @@
 
 ; http://stackoverflow.com/questions/3875213/turning-on-linum-mode-when-in-python-c-mode
 (setq linum-mode-inhibit-modes-list '(eshell-mode
-                               liangkai <kevin.scnu@gmail.com>       shell-mode
+                                      shell-mode
                                       profiler-report-mode
                                       ffip-diff-mode
                                       dictionary-mode

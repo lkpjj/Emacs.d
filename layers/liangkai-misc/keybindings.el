@@ -13,5 +13,3 @@
 
 (spacemacs/set-leader-keys "of" 'iterm-goto-filedir-or-home)
 (spacemacs/set-leader-keys "oi" 'iterm-focus)
-
-(spacemacs/set-leader-keys "jp" 'goto-match-parent)

@@ -72,19 +72,48 @@
 
 (setq url-show-status nil)
 
+;;Don't ask me when close emacs with process is running
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
+
 ;;Don't ask me when kill process buffer
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
 ;; cleanup recent files
-(defun cleanup-recentf-and-known-projects ()
+(defun cleanup-recentf ()
   (progn
     (and (fboundp 'recentf-cleanup)
-         (recentf-cleanup))
-    (and (fboundp 'projectile-cleanup-known-projects)
-         (projectile-cleanup-known-projects))))
-(add-hook 'kill-emacs-hook #'cleanup-recentf-and-known-projects)
+         (recentf-cleanup))))
+(add-hook 'kill-emacs-hook #'cleanup-recentf)
+
+;; change evil initial mode state
+(menu-bar-mode t)
+
+(defun spacemacs/check-large-file ()
+  (when (> (buffer-size) 500000)
+    (progn (fundamental-mode)
+           (hl-line-mode -1)))
+  (if (and (executable-find "wc")
+           (> (string-to-number (shell-command-to-string (format "wc -l %s" (buffer-file-name))))
+              5000))
+      (linum-mode -1)))
+(add-hook 'find-file-hook 'spacemacs/check-large-file)
+
+(defadvice find-file (before make-directory-maybe
+                             (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (when dir
+        (unless (file-exists-p dir)
+          (make-directory dir t))))))
+
+(add-hook 'minibuffer-inactive-mode-hook
+          #'(lambda() (set (make-local-variable 'semantic-mode) nil)
+              (set (make-local-variable 'electric-pair-mode) nil)))
 
 (add-hook 'before-save-hook
           (lambda ()

@@ -26,9 +26,12 @@
 (define-key global-map (kbd "C-c y") 'youdao-dictionary-search-at-point+)
 (define-key global-map (kbd "s-l") 'goto-line)
 
+;; cursor move
+(define-key evil-insert-state-map (kbd "C-a") 'mwim-beginning-of-line)
 (define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (define-key evil-motion-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (define-key evil-normal-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
+(spacemacs/set-leader-keys "jp" 'goto-match-parent)
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "<f5>") 'run-current-file)
@@ -37,6 +40,7 @@
 ;; buffer 相关
 (spacemacs/set-leader-keys "bm" 'spacemacs/kill-other-buffers)
 (spacemacs/set-leader-keys "bl" 'ibuffer-list-buffers)
+
 ;; 书签相关
 ;;Must set key to nil to prevent error: Key sequence o b s starts with non-prefix key o b
 (spacemacs/set-leader-keys "ob" nil)

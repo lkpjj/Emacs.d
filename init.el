@@ -9,6 +9,7 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     python
      vimscript
      shell-scripts
      javascript
@@ -52,8 +53,8 @@
                         layouts-autosave-delay 300)
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t
+                      auto-completion-enable-snippets-in-popup nil
                       :disabled-for org markdown)
      (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
      (c-c++ :variables
@@ -101,9 +102,10 @@
    dotspacemacs-themes '(
                          solarized-dark
                          )
-   dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Monaco"
-                               :size 14
+   dotspacemacs-colorize-cursor-according-to-state nil
+   dotspacemacs-default-font '( "monaco"
+                               ;; "Source Code Pro"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -154,12 +156,12 @@
    ))
 
 (defun dotspacemacs/user-init ()
-  ;; (setq configuration-layer--elpa-archives
-  ;;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-  ;;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-  ;;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-  ;;         ("melpa"    . "https://melpa.org/packages/")
-  ;;         ))
+  (setq configuration-layer--elpa-archives
+        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
+          ("melpa"    . "https://melpa.org/packages/")
+          ))
   (setq warning-minimum-level :error)
   ;; https://github.com/syl20bnr/spacemacs/issues/2705
   ;; (setq tramp-mode nil)
