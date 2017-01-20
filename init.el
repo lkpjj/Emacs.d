@@ -95,7 +95,7 @@ values."
                                                    spaceline spacemacs-theme highlight-indentation volatile-highlights
                                                    leuven-theme fancy-battery
                                                    ;; window
-                                                   eyebrowse smooth-scrolling spacemacs-purpose-popwin neotree
+                                                   eyebrowse smooth-scrolling spacemacs-purpose-popwin
                                                    ;; complete
                                                    auto-complete company-quickhelp auto-dictionary
                                                    ;; language

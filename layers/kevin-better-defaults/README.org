@@ -10,8 +10,11 @@
  - [[#key-bindings][Key bindings]]
 
 * Description
-This layer does wonderful things:
-  - thing01
+  主要包含自己对spacemacs的一些修改
+  - 移除一些不需要的package
+  - 增加一些需要用到的package
+  - 更改一些默认的配置
+  - 更改一些spacemacs定义的快捷键；添加一下自己常用的快捷键
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
@@ -20,11 +23,69 @@ file.
 
 * Key bindings
 
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
-# Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
-# Examples:
-# [[https://github.com/syl20bnr/spacemacs/blob/master/doc/VIMUSERS.org#sessions]]
-# [[https://github.com/syl20bnr/spacemacs/blob/master/layers/%2Bfun/emoji/README.org][Link to Emoji layer README.org]]
-# If space-doc-mode is enabled, Spacemacs will open a local copy of the linked file.
+  * evil
+    | Key Binding    | Description                      |
+    |----------------+----------------------------------|
+    | ~leader-key a~ | ~mwim-beginning-of-code-or-line~ |
+    | ~leader-key w~ | ~evil-write~                     |
+    | ~leader-key W~ | ~evil-write-all~                 |
+    | ~leader-key q~ | ~evil-quit~                      |
+    | ~C-w~          | ~evil-delete-backward-word~      |
+
+  * youdao-dictionary
+    | Key Binding | Description                          |
+    |-------------+--------------------------------------|
+    | ~C-c y~     | ~youdao-dictionary-search-at-point+~ |
+
+  * cursor move
+    | Key Binding | Description                |
+    |-------------+----------------------------|
+    | ~C-a~       | ~mwim-beginning-of-line~   |
+    | ~C-e~       | ~mwim-end-of-code-or-line~ |
+    | ~SPC jp~    | ~goto-match-parent~        |
+    | ~SPC jl~    | ~goto-line~                |
+
+  * region
+    | Key Binding | Description               |
+    |-------------+---------------------------|
+    | ~C-M-\\~    | ~indent-region-or-buffer~ |
+
+  * buffer
+    | Key Binding | Description            |
+    |-------------+------------------------|
+    | ~SPC bm~    | ~kill-other-buffers~   |
+    | ~SPC bl~    | ~ibuffer-list-buffers~ |
+
+  * helm
+    | Key Binding | Description  |
+    |-------------+--------------|
+    | ~C-s~       | ~helm-swoop~ |
+
+  * bookmark
+    | Key Binding | Description               |
+    |-------------+---------------------------|
+    | ~SPC ob~    | ~bookmark prefix~         |
+    | ~SPC obs~   | ~bookmark-set~            |
+    | ~SPC obr~   | ~bookmark-rename~         |
+    | ~SPC obd~   | ~bookmark-delete~         |
+    | ~SPC obj~   | ~helm-filtered-bookmarks~ |
+    | ~SPC obl~   | ~bookmark-bmenu-list~     |
+
+  * toggle
+    | Key Binding | Description       |
+    |-------------+-------------------|
+    | SPC ot      | toggle prefix     |
+    | SPC otm     | toggle-major-mode |
+    | SPC otb     | toggle-scroll-bar |
+    | SPC otw     | toggle-word-wrap  |
+
+  * iterm
+    | Key Binding | Description |
+    |-------------+-------------|
+    | SPC oi      | iterm-focus |
+
+  * flycheck
+    | Key Binding | Description             |
+    |-------------+-------------------------|
+    | SPC en      | flycheck-next-error     |
+    | SPC ep      | flycheck-previous-error |
