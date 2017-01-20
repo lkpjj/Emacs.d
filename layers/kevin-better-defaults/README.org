@@ -72,20 +72,20 @@ file.
     | ~SPC obl~   | ~bookmark-bmenu-list~     |
 
   * toggle
-    | Key Binding | Description       |
-    |-------------+-------------------|
-    | SPC ot      | toggle prefix     |
-    | SPC otm     | toggle-major-mode |
-    | SPC otb     | toggle-scroll-bar |
-    | SPC otw     | toggle-word-wrap  |
+    | Key Binding | Description         |
+    |-------------+---------------------|
+    | ~SPC ot~    | ~toggle prefix~     |
+    | ~SPC otm~   | ~toggle-major-mode~ |
+    | ~SPC otb~   | ~toggle-scroll-bar~ |
+    | ~SPC otw~   | ~toggle-word-wrap~  |
 
   * iterm
-    | Key Binding | Description |
-    |-------------+-------------|
-    | SPC oi      | iterm-focus |
+    | Key Binding | Description   |
+    |-------------+---------------|
+    | ~SPC oi~    | ~iterm-focus~ |
 
   * flycheck
-    | Key Binding | Description             |
-    |-------------+-------------------------|
-    | SPC en      | flycheck-next-error     |
-    | SPC ep      | flycheck-previous-error |
+    | Key Binding | Description               |
+    |-------------+---------------------------|
+    | ~SPC en~    | ~flycheck-next-error~     |
+    | ~SPC ep~    | ~flycheck-previous-error~ |
