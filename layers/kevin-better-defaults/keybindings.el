@@ -37,6 +37,8 @@
 (define-key evil-normal-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (spacemacs/set-leader-keys "jp" 'goto-match-parent)
 (spacemacs/set-leader-keys "jl" 'goto-line)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "<f5>") 'run-current-file)
