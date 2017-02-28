@@ -26,7 +26,8 @@
 (define-key evil-normal-state-map (kbd ",W") 'evil-write-all)
 (define-key evil-normal-state-map (kbd ",q") 'evil-quit)
 (define-key evil-normal-state-map (kbd "C-w") 'evil-delete-backward-word)
-
+(define-key evil-motion-state-map (kbd "C-i") 'evil-jump-forward)
+(define-key evil-motion-state-map (kbd "C-o") 'evil-jump-backward)
 
 (define-key global-map (kbd "C-c y") 'youdao-dictionary-search-at-point+)
 
@@ -47,6 +48,7 @@
 ;; buffer 相关
 (spacemacs/set-leader-keys "bm" 'spacemacs/kill-other-buffers)
 (spacemacs/set-leader-keys "bl" 'ibuffer-list-buffers)
+(spacemacs/set-leader-keys "bR" 'revert-buffer)
 
 ;; helm
 (global-set-key (kbd "C-s") 'helm-swoop)
