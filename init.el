@@ -33,6 +33,8 @@ values."
    ;; configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     sql
+     php
      shell-scripts
      javascript
      rust
