@@ -117,8 +117,7 @@ values."
   (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-          ))
+          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
   (setq warning-minimum-level :error)
   (electric-pair-mode t)
@@ -166,9 +165,9 @@ values."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((projects . 10)
+   dotspacemacs-startup-lists '((recents . 10)
                                 (bookmarks . 10)
-                                (recents . 10))
+                                (projects . 10))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -338,15 +337,14 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup `trailing
-   ))
+   dotspacemacs-whitespace-cleanup `changed))
 
 (defun dotspacemacs/user-init ()
   ; hack for remove purpose mode
   (setq purpose-mode nil))
 
 (defun dotspacemacs/user-config ()
-  ;; evil config
+  ;; cursor ui
   (setq evil-emacs-state-cursor '("red" box))
   (setq evil-normal-state-cursor '("red" box))
   (setq evil-visual-state-cursor '("orange" box))
