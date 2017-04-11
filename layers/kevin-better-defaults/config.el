@@ -46,7 +46,9 @@
             (setq dired-recursive-copies 'always)))
 
 ;; hook
-(add-hook 'prog-mode-hook (lambda ()(goto-address-prog-mode -1)))
+(add-hook 'prog-mode-hook (lambda ()
+                            (goto-address-prog-mode nil)))
+(add-hook 'prog-mode-hook 'spacemacs/toggle-hungry-delete-on)
 
 ;; UI
 (setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "DarkGoldenrod2" :foreground "black")))
@@ -55,6 +57,3 @@
       evil-motion-state-tag   (propertize "[M]" 'face '((:background "plum3") :foreground "white"))
       evil-visual-state-tag   (propertize "[V]" 'face '((:background "gray" :foreground "black")))
       evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
-
-;; global config
-(setq global-hungry-delete-mode t)
