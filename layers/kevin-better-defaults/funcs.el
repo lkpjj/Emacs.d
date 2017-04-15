@@ -13,8 +13,7 @@
 (defun iterm-focus ()
   (interactive)
   (do-applescript
-   " do shell script \"open -a iTerm\"\n"
-   ))
+   " do shell script \"open -a iTerm\"\n"))
 
 (defun goto-match-parent (arg)
   "Go to the matching  if on (){}[], similar to vi style of % "
@@ -26,3 +25,16 @@
         ((looking-at "[\]\)\}]") (forward-char) (evil-jump-item))
         ((looking-back "[\[\(\{]" 1) (backward-char) (evil-jump-item))
         (t nil)))
+
+;; dired mode config
+(defun my-dired-mode-hook ()
+  (dired-omit-mode t)
+  (setq dired-omit-files (concat dired-omit-files "\\|^.DS_Store$\\|^.projectile$\\|\\.js\\.meta$\\|\\.meta$"))
+  ;; always delete and copy recursively
+  (setq dired-recursive-deletes 'always)
+  (setq dired-recursive-copies 'always))
+
+;; prog mode hook
+(defun my-prog-mode-hook ()
+  (goto-address-prog-mode nil)
+  (spacemacs/toggle-hungry-delete-on))

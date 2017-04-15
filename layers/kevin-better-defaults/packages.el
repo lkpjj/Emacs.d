@@ -12,7 +12,9 @@
 ;;; Commentary:
 
 (defconst kevin-better-defaults-packages
-  '(youdao-dictionary))
+  '(youdao-dictionary
+    ;; spaceline-all-the-icons
+    ))
 
 (defun kevin-better-defaults/init-youdao-dictionary ()
   (use-package youdao-dictionary
@@ -26,5 +28,11 @@
             (concat spacemacs-cache-directory ".youdao")
             ;; Enable Chinese word segmentation support
             youdao-dictionary-use-chinese-word-segmentation t))))
+
+;; (defun kevin-better-defaults-packages/init-spaceline-all-theme-icons ()
+;;   (use-package spaceline-all-the-icons
+;;     :toggle spaceline
+;;     :config (spaceline-all-the-icons-theme))
+;;   )
 
 ;;; packages.el ends here

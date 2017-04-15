@@ -14,7 +14,9 @@
 ;; personal config
 (setq user-full-name "kevin")
 (setq user-mail-address "kevin.scnu@gmail.com")
-(setq default-directory "/Users/liangkai/Code/gopath/src")
+(setq default-directory "~/Code/gopath/src")
+
+(add-to-list 'custom-theme-load-path "~/.spacemacs.d/themes")
 
 ;; editor config
 (setq-default fill-column 80)
@@ -36,24 +38,15 @@
 (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
 ;; (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
 
-;; dired mode config
-(add-hook 'dired-mode-hook
-          (lambda ()
-            (dired-omit-mode t)
-            (setq dired-omit-files (concat dired-omit-files "\\|^.DS_Store$\\|^.projectile$\\|\\.js\\.meta$\\|\\.meta$"))
-            ;; always delete and copy recursively
-            (setq dired-recursive-deletes 'always)
-            (setq dired-recursive-copies 'always)))
 
 ;; hook
-(add-hook 'prog-mode-hook (lambda ()
-                            (goto-address-prog-mode nil)))
-(add-hook 'prog-mode-hook 'spacemacs/toggle-hungry-delete-on)
+(add-hook 'dired-mode-hook 'my-dired-mode-hook)
+(add-hook 'prog-mode-hook 'my-prog-mode-hook)
 
-;; UI
-(setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "DarkGoldenrod2" :foreground "black")))
-      evil-emacs-state-tag    (propertize "[E]" 'face '((:background "SkyBlue2" :foreground "black")))
-      evil-insert-state-tag   (propertize "[I]" 'face '((:background "chartreuse3") :foreground "white"))
-      evil-motion-state-tag   (propertize "[M]" 'face '((:background "plum3") :foreground "white"))
-      evil-visual-state-tag   (propertize "[V]" 'face '((:background "gray" :foreground "black")))
-      evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
+;; ;; UI
+;; (setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "DarkGoldenrod2" :foreground "black")))
+;;       evil-emacs-state-tag    (propertize "[E]" 'face '((:background "SkyBlue2" :foreground "black")))
+;;       evil-insert-state-tag   (propertize "[I]" 'face '((:background "chartreuse3") :foreground "white"))
+;;       evil-motion-state-tag   (propertize "[M]" 'face '((:background "plum3") :foreground "white"))
+;;       evil-visual-state-tag   (propertize "[V]" 'face '((:background "gray" :foreground "black")))
+;;       evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))

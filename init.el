@@ -60,8 +60,8 @@ values."
             shell-default-position 'bottom)
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
-     (colors :variables
-             colors-enable-nyan-cat-progress-bar t)
+     ;; (colors :variables
+             ;; colors-enable-nyan-cat-progress-bar t)
      (go :variables
          go-tab-width 4
          gofmt-command "goimports")
@@ -88,16 +88,17 @@ values."
                                                    evil-args evil-ediff evil-exchange evil-unimpaired
                                                    evil-indent-plus  evil-escape evil-lisp-state
                                                    ;; org
-                                                   org-bullets  org-repo-todo org-download org-timer
-                                                   org-present orgit orglue org-projectile
+                                                   ;; org-bullets  org-repo-todo org-download org-timer
+                                                   ;; org-present orgit orglue org-projectile
                                                    ;; mode
                                                    holy-mode skewer-mode livid-mode ace-jump-mode clean-aindent-mode
                                                    ido-vertical-mode
                                                    ;; color
-                                                   spaceline spacemacs-theme highlight-indentation volatile-highlights
-                                                   leuven-theme fancy-battery
+                                                   ;; spaceline
+                                                   spacemacs-theme highlight-indentation volatile-highlights
                                                    ;; window
-                                                   eyebrowse smooth-scrolling spacemacs-purpose-popwin
+                                                   ;; eyebrowse
+                                                   smooth-scrolling spacemacs-purpose-popwin
                                                    ;; complete
                                                    auto-complete company-quickhelp auto-dictionary
                                                    ;; language
@@ -114,10 +115,10 @@ values."
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-          ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+   (setq configuration-layer--elpa-archives
+         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
 
   (setq warning-minimum-level :error)
   (electric-pair-mode t)
@@ -175,16 +176,16 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark
-                         spacemacs-dark
-                         zenburn
-                         sanityinc-tomorrow-night)
+   dotspacemacs-themes '(sanityinc-tomorrow-night
+                         darkokai
+                         solarized-dark
+                         zenburn)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("monaco"
-                               :size 14
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -344,14 +345,13 @@ values."
   (setq purpose-mode nil))
 
 (defun dotspacemacs/user-config ()
-  ;; cursor ui
-  (setq evil-emacs-state-cursor '("red" box))
-  (setq evil-normal-state-cursor '("red" box))
-  (setq evil-visual-state-cursor '("orange" box))
-  (setq evil-insert-state-cursor '("red" bar))
-  (setq evil-replace-state-cursor '("red" bar))
-  (setq evil-operator-state-cursor '("red" hollow))
-
+;;   ;; cursor ui
+;;   (setq evil-emacs-state-cursor '("red" box))
+;;   (setq evil-normal-state-cursor '("red" box))
+;;   (setq evil-visual-state-cursor '("orange" box))
+;;   (setq evil-insert-state-cursor '("red" bar))
+;;   (setq evil-replace-state-cursor '("red" bar))
+;;   (setq evil-operator-state-cursor '("red" hollow))
   ;; diminish
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
@@ -371,9 +371,4 @@ values."
 ;; auto-generate custom variable definitions.
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-  )
+(defun dotspacemacs/emacs-custom-settings ())
