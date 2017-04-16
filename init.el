@@ -74,7 +74,6 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup nil
                       :disabled-for org markdown)
-     ;; version-control
      kevin-better-defaults)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these

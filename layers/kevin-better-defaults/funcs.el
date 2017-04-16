@@ -38,3 +38,17 @@
 (defun my-prog-mode-hook ()
   (goto-address-prog-mode nil)
   (spacemacs/toggle-hungry-delete-on))
+
+(defun notify-osx (title message)
+  (call-process "terminal-notifier"
+                nil 0 nil
+                "-group" "Emacs"
+                "-title" title
+                "-sender" "org.gnu.Emacs"
+                "-message" message
+                "-activate" "oeg.gnu.Emacs"))
+
+(defun my-appt-display (min-to-app new-time msg)
+  (notify-osx
+   (format "Appointment in %s minutes" min-to-app)    ;; passed to -title in terminal-notifier call
+   (format "%s" msg)))                                ;; passed to -message in terminal-notifier call
