@@ -35,7 +35,6 @@ values."
    '(
      python
      sql
-     php
      shell-scripts
      javascript
      rust
@@ -54,10 +53,10 @@ values."
      (git :variables
           git-magit-status-fullscreen t)
      (shell :variables
-            shell-default-shell 'eshell
-            shell-default-height 30
-            shell-enable-smart-eshell t
-            shell-default-position 'bottom)
+            shell-default-shell 'term
+            shell-default-height 50
+            shell-default-position 'full
+            shell-default-term-shell "/usr/local/bin/fish")
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
      ;; (colors :variables
@@ -65,6 +64,8 @@ values."
      (go :variables
          go-tab-width 4
          gofmt-command "goimports")
+     (gtags :variables
+            gtags-enable-by-default t)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
@@ -87,9 +88,6 @@ values."
                                                    ;; evil
                                                    evil-args evil-ediff evil-exchange evil-unimpaired
                                                    evil-indent-plus  evil-escape evil-lisp-state
-                                                   ;; org
-                                                   ;; org-bullets  org-repo-todo org-download org-timer
-                                                   ;; org-present orgit orglue org-projectile
                                                    ;; mode
                                                    holy-mode skewer-mode livid-mode ace-jump-mode clean-aindent-mode
                                                    ido-vertical-mode
@@ -97,7 +95,6 @@ values."
                                                    ;; spaceline
                                                    spacemacs-theme highlight-indentation volatile-highlights
                                                    ;; window
-                                                   ;; eyebrowse
                                                    smooth-scrolling spacemacs-purpose-popwin
                                                    ;; complete
                                                    auto-complete company-quickhelp auto-dictionary
@@ -115,11 +112,6 @@ values."
    dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
-   (setq configuration-layer--elpa-archives
-         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
-
   (setq warning-minimum-level :error)
   (electric-pair-mode t)
   (xterm-mouse-mode -1)
@@ -177,15 +169,15 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(sanityinc-tomorrow-night
-                         darkokai
+                         zenburn
                          solarized-dark
-                         zenburn)
+                         darkokai)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("monaco"
-                               :size 13
+   dotspacemacs-default-font '("Monaco"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -224,7 +216,7 @@ values."
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
    ;; Name of the default layout (default "Default")
-   dotspacemacs-default-layout-name "Default"
+   dotspacemacs-default-layout-name "init"
    ;; If non-nil the default layout name is displayed in the mode-line.
    ;; (default nil)
    dotspacemacs-display-default-layout t
@@ -349,23 +341,14 @@ values."
 ;;   (setq evil-emacs-state-cursor '("red" box))
 ;;   (setq evil-normal-state-cursor '("red" box))
 ;;   (setq evil-visual-state-cursor '("orange" box))
-;;   (setq evil-insert-state-cursor '("red" bar))
+  (setq evil-insert-state-cursor '("red" bar))
 ;;   (setq evil-replace-state-cursor '("red" bar))
 ;;   (setq evil-operator-state-cursor '("red" hollow))
   ;; diminish
   (spacemacs|diminish which-key-mode)
-  (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-
-  ;; Setting Chinese Font
-  (when (and (spacemacs/system-is-mswindows) window-system)
-    (setq ispell-program-name "aspell")
-    (setq w32-pass-alt-to-system nil)
-    (setq w32-apps-modifier 'super)
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font)
-                        charset
-                        (font-spec :family "Microsoft Yahei" :size 14))))
-  )
+  (spacemacs|diminish hungry-delete-mode)
+  (spacemacs|diminish ggtags-mode)
+  (spacemacs|diminish spacemacs-whitespace-cleanup-mode))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

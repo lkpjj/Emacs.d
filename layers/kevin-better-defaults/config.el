@@ -14,9 +14,22 @@
 ;; personal config
 (setq user-full-name "kevin")
 (setq user-mail-address "kevin.scnu@gmail.com")
-(setq default-directory "~/Code/gopath/src")
+;; default directory
+(setq-default default-directory "~/Code/gopath/src")
 
-(add-to-list 'custom-theme-load-path "~/.spacemacs.d/themes")
+;; org
+(defvar org-agenda-dir ""
+  "gtd org files location")
+(setq-default org-agenda-dir "~/Code/org-notes")
+(setq org-agenda-files (list org-agenda-dir))
+(setq org-projectile-file (expand-file-name "projects.org" org-agenda-dir))
+(setq org-agenda-file-note (expand-file-name "notes.org" org-agenda-dir))
+(setq org-agenda-file-gtd (expand-file-name "gtd.org" org-agenda-dir))
+(setq org-agenda-file-journal (expand-file-name "journal.org" org-agenda-dir))
+(setq org-agenda-file-code-snippet (expand-file-name "snippet.org" org-agenda-dir))
+(setq org-default-notes-file (expand-file-name "gtd.org" org-agenda-dir))
+
+
 
 ;; editor config
 (setq-default fill-column 80)
@@ -36,8 +49,6 @@
 ;; move helm input in minibuffer
 (setq helm-echo-input-in-header-line nil)
 (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
-;; (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-
 
 ;; hook
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
