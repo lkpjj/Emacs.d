@@ -33,6 +33,7 @@ values."
    ;; configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     vimscript
      python
      sql
      shell-scripts
@@ -54,8 +55,8 @@ values."
           git-magit-status-fullscreen t)
      (shell :variables
             shell-default-shell 'term
-            shell-default-height 50
-            shell-default-position 'full
+            shell-default-height 40
+            shell-default-position 'bottom
             shell-default-term-shell "/usr/local/bin/fish")
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
@@ -175,8 +176,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco"
-                               :size 14
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -215,13 +216,13 @@ values."
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
    ;; Name of the default layout (default "Default")
-   dotspacemacs-default-layout-name "init"
+   dotspacemacs-default-layout-name "Default"
    ;; If non-nil the default layout name is displayed in the mode-line.
    ;; (default nil)
    dotspacemacs-display-default-layout t
    ;; If non-nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -332,10 +333,11 @@ values."
    dotspacemacs-whitespace-cleanup `changed))
 
 (defun dotspacemacs/user-init ()
-  ; hack for remove purpose mode
+;; hack for remove purpose mode
   (setq purpose-mode nil))
 
 (defun dotspacemacs/user-config ()
+  (setq powerline-default-separator 'arrow)
 ;;   ;; cursor ui
 ;;   (setq evil-emacs-state-cursor '("red" box))
 ;;   (setq evil-normal-state-cursor '("red" box))
@@ -344,7 +346,7 @@ values."
 ;;   (setq evil-replace-state-cursor '("red" bar))
 ;;   (setq evil-operator-state-cursor '("red" hollow))
   ;; diminish
-  (spacemacs|diminish which-key-mode)
+  ;; (spacemacs|diminish which-key-mode)
   (spacemacs|diminish hungry-delete-mode)
   (spacemacs|diminish ggtags-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode))
