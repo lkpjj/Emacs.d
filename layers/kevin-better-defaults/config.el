@@ -20,7 +20,7 @@
 ;; editor config
 (setq-default fill-column 80)
 ;; (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-(which-function-mode)
+;; (which-function-mode)
 ;; when editing js file, this feature is very useful
 (setq-default header-line-format
               '((which-func-mode ("" which-func-format " "))))
