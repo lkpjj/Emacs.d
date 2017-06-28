@@ -25,7 +25,7 @@
 (setq-default header-line-format
               '((which-func-mode ("" which-func-format " "))))
 ;; more useful frame title, that show either a file or a
-;; buffer name (if the buffer isn't visiting a file)
+;; buffer name (if the buffer isn't visi		dms           []*model.DMting a file)
 (setq frame-title-format
       '("" " Kevin "
         (:eval (if (buffer-file-name)
