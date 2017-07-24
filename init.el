@@ -51,11 +51,10 @@ values."
           org-agenda-to-appt t)
      osx
      dash
-     git
-     ;; (git :variables
-          ;; git-magit-status-fullscreen t)
+     (git :variables
+          git-magit-status-fullscreen t)
      (shell :variables
-            shell-default-shell 'term
+            shell-default-shell 'ansi-term
             shell-default-height 40
             shell-default-position 'bottom
             shell-default-term-shell "/usr/local/bin/fish")
@@ -82,20 +81,21 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(doom-themes)
+   dotspacemacs-additional-packages '(doom-themes spaceline-all-the-icons)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(magit-gh-pulls magit-gitflow git-gutter git-gutter-fringe
                                                 ;; evil
                                                 evil-args evil-ediff evil-exchange evil-unimpaired
+                                                spaceline
                                                 evil-indent-plus  evil-escape evil-lisp-state
                                                 ;; mode
                                                 holy-mode skewer-mode livid-mode ace-jump-mode clean-aindent-mode
                                                 ido-vertical-mode
                                                 ;; color
                                                 ;; spaceline
-                                                spacemacs-theme highlight-indentation volatile-highlights
+                                                highlight-indentation volatile-highlights
                                                 ;; window
                                                 smooth-scrolling spacemacs-purpose-popwin
                                                 ;; complete
@@ -171,7 +171,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(doom-one
-                         spacemacs-dark
+                         solarized-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -276,7 +276,7 @@ values."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 95
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -321,7 +321,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -347,12 +347,17 @@ values."
   (spacemacs|diminish ggtags-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
+  ;; whitespace mode config
+  (global-whitespace-mode t)
+  (setq whitespace-style '(tabs tab-mark))
+
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-  ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-  ;; may have their own settings.
+  ;; ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+  ;; ;; may have their own settings.
+  (spacemacs/load-theme 'doom-tomorrow-night)
   ;; (load-theme 'doom-tomorrow-night t)
 
   ;; Enable flashing mode-line on errors

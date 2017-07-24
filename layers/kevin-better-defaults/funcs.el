@@ -52,3 +52,7 @@
   (notify-osx
    (format "Appointment in %s minutes" min-to-app)    ;; passed to -title in terminal-notifier call
    (format "%s" msg)))                                ;; passed to -message in terminal-notifier call
+
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive) (revert-buffer t t))
