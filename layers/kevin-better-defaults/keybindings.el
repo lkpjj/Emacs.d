@@ -50,7 +50,7 @@
 ;; buffer 相关
 (spacemacs/set-leader-keys "bm" 'spacemacs/kill-other-buffers)
 (spacemacs/set-leader-keys "bl" 'ibuffer-list-buffers)
-(spacemacs/set-leader-keys "bR" 'revert-buffer)
+(spacemacs/set-leader-keys "bg" 'revert-buffer)
 
 ;; helm
 (global-set-key (kbd "C-s") 'helm-swoop)

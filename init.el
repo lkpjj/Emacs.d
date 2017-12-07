@@ -1,5 +1,5 @@
-;; -*- mode: emacs-lisp -*-
-;; This file is loaded by Spacemacs at startup.
+-;; -*- mode: emacs-lisp -*-
+-;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
 (defun dotspacemacs/layers ()
@@ -36,6 +36,8 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     lua
+     html
      python
      sql
      shell-scripts
@@ -52,9 +54,10 @@ values."
      osx
      dash
      (git :variables
-          git-magit-status-fullscreen t)
+          git-magit-status-fullscreen t
+          git-gitter-use-fringe t)
      (shell :variables
-            shell-default-shell 'ansi-term
+            shell-default-shell 'eshell
             shell-default-height 40
             shell-default-position 'bottom
             shell-default-term-shell "/usr/local/bin/fish")
@@ -75,19 +78,27 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup nil
                       :disabled-for org markdown)
-     ;; version-control
+     (treemacs :variables
+               treemacs-use-follow-mode t
+               treemacs-use-filewatch-mode t
+               treemacs-show-hidden-files nil
+               treemacs-git-integration t
+               treemacs-is-never-other-window t
+               treemacs-position 'left)
      kevin-better-defaults)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(doom-themes spaceline-all-the-icons)
+   dotspacemacs-additional-packages '(doom-themes)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(magit-gh-pulls magit-gitflow git-gutter git-gutter-fringe
+   dotspacemacs-excluded-packages '(magit-gh-pulls
+                                    ;; magit-gitflow git-gutter git-gutter-fringe
                                                 ;; evil
-                                                evil-args evil-ediff evil-exchange evil-unimpaired
+                                                evil-args evil-ediff evil-exchange
+                                                ;; evil-unimpaired
                                                 spaceline
                                                 evil-indent-plus  evil-escape evil-lisp-state
                                                 ;; mode
@@ -126,14 +137,14 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update t
+   dotspacemacs-check-for-update nil
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -160,7 +171,8 @@ values."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
+   dotspacemacs-startup-lists '(
+                                (recents . 5)
                                 (bookmarks . 5)
                                 (projects . 7))
    ;; True if the home buffer should respond to resize events.
@@ -170,7 +182,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-one
+   dotspacemacs-themes '(spacemacs-dark
+                         doom-one
                          solarized-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -227,14 +240,14 @@ values."
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
-   dotspacemacs-large-file-size 10
+   dotspacemacs-large-file-size 100
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
    dotspacemacs-auto-save-file-location 'cache
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
-   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-max-rollback-slots 3
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
@@ -339,14 +352,25 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
+  ; (setq configuration-layer--elpa-archives
+  ;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+  ;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+  ;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+  ;; (setq-default solarized-underline nil)
   )
 
 (defun dotspacemacs/user-config ()
+  (add-to-list 'load-path (expand-file-name  "extensions" dotspacemacs-directory))
+  (add-to-list 'load-path (expand-file-name  "elisp" dotspacemacs-directory))
+  (require 'init-auto-save)
+
   (setq powerline-default-separator 'arrow)
   (spacemacs|diminish hungry-delete-mode)
   (spacemacs|diminish ggtags-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
+  ;; (setq treemacs-git-integration t)
+  ;; (setq treemacs-show-hidden-files nil)
   ;; whitespace mode config
   (global-whitespace-mode t)
   (setq whitespace-style '(tabs tab-mark))
@@ -354,17 +378,16 @@ values."
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-
-  ;; ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-  ;; ;; may have their own settings.
+  ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+  ;; may have their own settings.
   (spacemacs/load-theme 'doom-tomorrow-night)
-  ;; (load-theme 'doom-tomorrow-night t)
-
+  (setq nlinum-highlight-current-line t)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-
   ;; Enable custom neotree theme
-  (doom-themes-neotree-config))  ; all-the-icons fonts must be installed!)
+  ;; (doom-themes-neotree-config) ; all-the-icons fonts must be installed!)
+  )
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
