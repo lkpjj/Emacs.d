@@ -85,12 +85,12 @@ values."
                treemacs-git-integration t
                treemacs-is-never-other-window t
                treemacs-position 'left)
-     kevin-better-defaults)
+     liangkai)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(doom-themes)
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -182,16 +182,15 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         doom-one
-                         solarized-dark
+   dotspacemacs-themes '(sanityinc-tomorrow-night
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Monaco"
-                               :size 14
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -366,6 +365,7 @@ values."
 
   (setq powerline-default-separator 'arrow)
   (spacemacs|diminish hungry-delete-mode)
+  (spacemacs|diminish git-gutter-mode)
   (spacemacs|diminish ggtags-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
@@ -374,18 +374,7 @@ values."
   ;; whitespace mode config
   (global-whitespace-mode t)
   (setq whitespace-style '(tabs tab-mark))
-
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-  ;; may have their own settings.
-  (spacemacs/load-theme 'doom-tomorrow-night)
-  (setq nlinum-highlight-current-line t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme
-  ;; (doom-themes-neotree-config) ; all-the-icons fonts must be installed!)
+  ;; (setq nlinum-highlight-current-line t)
   )
 
 

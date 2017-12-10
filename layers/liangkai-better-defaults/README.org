@@ -1,13 +1,13 @@
-#+TITLE: kevin-better-defaults layer
+#+TITLE: liangkai-better-defaults layer
 
 # The maximum height of the logo should be 200 pixels.
-[[img/kevin-better-defaults.png]]
+[[img/liangkai-better-defaults.png]]
 
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
- - [[#description][Description]]
- - [[#install][Install]]
- - [[#key-bindings][Key bindings]]
+- [[#description][Description]]
+- [[#install][Install]]
+- [[#key-bindings][Key bindings]]
 
 * Description
   主要包含自己对spacemacs的一些修改
@@ -18,7 +18,7 @@
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
-add =kevin-better-defaults= to the existing =dotspacemacs-configuration-layers= list in this
+add =liangkai-better-defaults= to the existing =dotspacemacs-configuration-layers= list in this
 file.
 
 * Key bindings

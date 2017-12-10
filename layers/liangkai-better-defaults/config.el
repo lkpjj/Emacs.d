@@ -1,4 +1,4 @@
-;;; config.el --- kevin-better-defaults layer config file for Spacemacs.
+;;; config.el --- liangkai-better-defaults layer config file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
