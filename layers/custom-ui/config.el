@@ -25,6 +25,10 @@
 ;; which-func 设置
 (which-func-mode)
 (defun enable-which-func()
+  ;; 从mode line移除which-func
+  (setq-default mode-line-misc-info
+                (assq-delete-all 'which-func-mode mode-line-misc-info))
+  ;; 在header-line 显示which-func
   (setq-default header-line-format
                 '((which-func-mode ("" which-func-format " ")))))
 ;; 只在固定的mode中激活
