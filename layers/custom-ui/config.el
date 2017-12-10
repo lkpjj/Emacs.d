@@ -52,4 +52,4 @@
 
 ;; whitespace mode config
 (global-whitespace-mode t)
-(setq whitespace-style '(tabs tab-mark))
+(setq whitespace-style '(face tabs trailing tab-mark))

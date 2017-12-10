@@ -106,7 +106,6 @@ values."
                                                 holy-mode skewer-mode livid-mode ace-jump-mode clean-aindent-mode
                                                 ido-vertical-mode
                                                 ;; color
-                                                ;; spaceline
                                                 highlight-indentation volatile-highlights
                                                 ;; window
                                                 smooth-scrolling spacemacs-purpose-popwin
@@ -165,7 +164,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 'random
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -360,9 +359,7 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
-  (add-to-list 'load-path (expand-file-name  "extensions" dotspacemacs-directory))
-  (add-to-list 'load-path (expand-file-name  "elisp" dotspacemacs-directory))
-  (require 'init-auto-save))
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will

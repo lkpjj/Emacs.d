@@ -1,4 +1,4 @@
-;;; keybindings.el --- custom-better-defaults layer keybindings file for Spacemacs.
+;;; funcs.el --- custom-layers layer keybindings file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
