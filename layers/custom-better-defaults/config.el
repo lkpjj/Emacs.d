@@ -14,23 +14,9 @@
 ;; personal config
 (setq user-full-name "kevin")
 (setq user-mail-address "kevin.scnu@gmail.com")
-;; remove menu bar
-(setq menu-bar-mode nil)
+
 ;; default directory
 (setq-default default-directory "~/Code/gopath/src")
-
-;; editor config
-(setq-default fill-column 80)
-;; (which-function-mode)
-;; when editing js file, this feature is very useful
-;; (setq-default header-line-format
-              ;; '((which-func-mode ("" which-func-format " "))))
-;; more useful frame title, that show either a file or a
-;; buffer name (if the buffer isn't visi		dms           []*model.DMting a file)
-(setq frame-title-format
-      '("" " Kevin "
-        (:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name)) "%b"))))
 
 ;; helm config
 ;; move helm input in minibuffer
@@ -41,14 +27,6 @@
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)
 (add-hook 'after-save-hook 'revert-buffer-no-confirm)
-
-;; UI
-(setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "DarkGoldenrod2" :foreground "black")))
-      evil-emacs-state-tag    (propertize "[E]" 'face '((:background "SkyBlue2" :foreground "black")))
-      evil-insert-state-tag   (propertize "[I]" 'face '((:background "chartreuse3") :foreground "white"))
-      evil-motion-state-tag   (propertize "[M]" 'face '((:background "plum3") :foreground "white"))
-      evil-visual-state-tag   (propertize "[V]" 'face '((:background "gray" :foreground "black")))
-      evil-operator-state-tag (propertize "[O]" 'face '((:background "purple"))))
 
 ;; org
 (defvar org-agenda-dir "~/Code/org-notes"

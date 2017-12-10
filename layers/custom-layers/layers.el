@@ -10,6 +10,7 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
+                                      custom-ui
                                       custom-better-defaults
                                       custom-chinese
                                       custom-packages

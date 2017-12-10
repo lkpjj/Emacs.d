@@ -85,7 +85,8 @@ values."
                treemacs-git-integration t
                treemacs-is-never-other-window t
                treemacs-position 'left)
-     custom-layer)
+     ;; 添加自定义layer
+     custom-layers)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -361,21 +362,7 @@ values."
 (defun dotspacemacs/user-config ()
   (add-to-list 'load-path (expand-file-name  "extensions" dotspacemacs-directory))
   (add-to-list 'load-path (expand-file-name  "elisp" dotspacemacs-directory))
-  (require 'init-auto-save)
-
-  (setq powerline-default-separator 'arrow)
-  (spacemacs|diminish hungry-delete-mode)
-  (spacemacs|diminish git-gutter-mode)
-  (spacemacs|diminish ggtags-mode)
-  (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-
-  ;; (setq treemacs-git-integration t)
-  ;; (setq treemacs-show-hidden-files nil)
-  ;; whitespace mode config
-  (global-whitespace-mode t)
-  (setq whitespace-style '(tabs tab-mark))
-  ;; (setq nlinum-highlight-current-line t)
-  )
+  (require 'init-auto-save))
 
 
 ;; Do not write anything past this comment. This is where Emacs will

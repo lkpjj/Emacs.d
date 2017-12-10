@@ -1,4 +1,4 @@
-;;; keybindings.el --- custom-layer layer keybindings file for Spacemacs.
+;;; keybindings.el --- custom-layers layer keybindings file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
