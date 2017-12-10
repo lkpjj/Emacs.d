@@ -1,4 +1,4 @@
-;;; keybindings.el --- liangkai-better-defaults layer keybindings file for Spacemacs.
+;;; keybindings.el --- custom-better-defaults layer keybindings file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;

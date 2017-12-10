@@ -85,7 +85,7 @@ values."
                treemacs-git-integration t
                treemacs-is-never-other-window t
                treemacs-position 'left)
-     liangkai)
+     custom-layer)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the

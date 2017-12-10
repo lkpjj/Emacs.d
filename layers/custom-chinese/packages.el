@@ -1,4 +1,4 @@
-;;; packages.el --- chinese-layer layer packages file for Spacemacs.
+;;; packages.el --- custom-chinese layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -11,14 +11,14 @@
 
 ;;; Commentary:
 
-(defconst liangkai-chinese-pkgs-packages
+(defconst custom-chinese-packages
   '(
     youdao-dictionary
     pangu-spacing
     pyim
     ))
 
-(defun liangkai-chinese-pkgs/init-youdao-dictionary ()
+(defun custom-chinese/init-youdao-dictionary ()
   (use-package youdao-dictionary
     :ensure t
     :config
@@ -32,7 +32,7 @@
             youdao-dictionary-use-chinese-word-segmentation t))))
 
 
-(defun liangkai-chinese-pkgs/init-pyim ()
+(defun custom-chinese/init-pyim ()
   (use-package pyim
     :init
     :config
@@ -56,7 +56,7 @@
                     '(pyim-probe-program-mode))
       (evilified-state-evilify pyim-dm-mode pyim-dm-mode-map))))
 
-(defun liangkai-chinese-pkgs/init-pangu-spacing ()
+(defun custom-chinese/init-pangu-spacing ()
   (use-package pangu-spacing
     :defer t
     :init (progn (global-pangu-spacing-mode 1)
@@ -65,4 +65,3 @@
                  (add-hook 'org-mode-hook
                            '(lambda ()
                               (set (make-local-variable 'pangu-spacing-real-insert-separtor) t))))))
-;;; packages.el ends here

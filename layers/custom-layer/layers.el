@@ -10,7 +10,7 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-                                      liangkai-better-defaults
-                                      liangkai-chinese-pkgs
-                                      liangkai-private-tools
+                                      custom-better-defaults
+                                      custom-chinese
+                                      custom-packages
                                       ))

@@ -1,4 +1,4 @@
-;;; packages.el --- liangkai-private-tools layer packages file for Spacemacs.
+;;; packages.el --- custom-packages layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -11,12 +11,12 @@
 
 ;;; Commentary:
 
-(defconst liangkai-private-tools-packages
+(defconst custom-packages-packages
   '(
     git-gutter-fringe
     ))
 
-(defun liangkai-private-tools/init-git-gutter-fringe ()
+(defun custom-packages/init-git-gutter-fringe ()
   (use-package git-gutter-fringe
     :ensure t
     :config
