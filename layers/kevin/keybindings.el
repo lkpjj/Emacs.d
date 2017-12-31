@@ -36,8 +36,8 @@
 (define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (define-key evil-motion-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (define-key evil-normal-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
-(define-key evil-insert-state-map (kbd "C-n") 'next-line)
-(define-key evil-insert-state-map (kbd "C-p") 'previous-line)
+;; (define-key evil-insert-state-map (kbd "C-n") 'next-line)
+;; (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 (spacemacs/set-leader-keys "jp" 'kevin/goto-match-parent)
@@ -45,6 +45,24 @@
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "<f5>") 'run-current-file)
+
+;; eshell
+;; Aliases
+(setq eshell-command-aliases-list
+      '(("q"   "exit")
+        ("l"   "ls -1")
+        ("ll"  "ls -l")
+        ("la"  "ls -la")
+        ("g"   "hub")
+        ("gs"  "hub status --short .")))
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-j") 'eshell-previous-input)
+            (local-set-key (kbd "C-k") 'eshell-next-input)
+            (local-set-key (kbd "C-u") 'eshell-kill-input)
+            (local-set-key (kbd "<up>") 'eshell-previous-matching-input-from-input)
+            (local-set-key (kbd "<down>") 'eshell-next-matching-input-from-input)
+            ))
 
 ;; 自定义按键
 ;; buffer 相关

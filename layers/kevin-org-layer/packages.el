@@ -1,6 +1,6 @@
 ;;; config.el --- kevin-org-layer layer config file for Spacemacs.
 ;;
-;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
+;; Copyright (c) 2012-2017 Sylv Contributors
 ;;
 ;; Author: kevin <kevin.scnu@gmail.com>
 ;; URL: https://github.com/syl20bnr/spacemacs
@@ -16,8 +16,7 @@
     (org :location built-in)
     org-pomodoro
     ))
-
-(defun kevin-org-layer/post-init-org ()
+ (defun kevin-org-layer/post-init-org ()
   (with-eval-after-load 'org
     (progn
       (spacemacs|disable-company org-mode)
@@ -58,10 +57,9 @@
       (setq org-agenda-files (list org-agenda-dir))
 
       (with-eval-after-load 'org-agenda
-        (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
+        ;; (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
         (spacemacs/set-leader-keys-for-major-mode 'org-agenda-mode
-          "." 'spacemacs/org-agenda-transient-state/body)
-        )
+          "." 'spacemacs/org-agenda-transient-state/body))
 
       ;; appt
       (require 'appt)
@@ -72,7 +70,7 @@
       (setq appt-display-format 'window)   ;; pass warnings to the designated window function
       (appt-activate 1)                ;; activate appointment notification
       (display-time)                   ;; activate time display
-      (org-agenda-to-appt)             ;; generate the appt list from org agenda files on emacs launch
+      ;; (org-agenda-to-appt)             ;; generate the appt list from org agenda files on emacs launch
       (run-at-time "24:01" 3600 'org-agenda-to-appt)           ;; update appt list hourly
       (add-hook 'org-finalize-agenda-hook 'org-agenda-to-appt) ;; update appt list on agenda view
       ;; notification app

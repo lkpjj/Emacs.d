@@ -44,32 +44,40 @@ values."
      ;; javascript
      rust
      helm
+     dash
+     emacs-lisp
+     markdown
+     ranger
      (better-defaults :variables
                       better-defaults-move-to-beginning-of-code-first t
                       better-defaults-move-to-end-of-code-first t)
-     emacs-lisp
-     markdown
      (org :variables
-          org-agenda-to-appt t)
-     osx
-     dash
+          org-agenda-to-appt t
+          org-want-todo-bindings t)
+     (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English"
+          osx-command-as 'super)
      (git :variables
+          git-gitter-use-fringe t
           git-magit-status-fullscreen t
-          git-gitter-use-fringe t)
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          magit-revision-show-gravatars nil)
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom
             shell-default-term-shell "/usr/local/bin/fish")
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
+     (ibuffer :variables ibuffer-group-buffers-by 'projects)
+     (spell-checking :variables spell-checking-enable-by-default nil)
      ;; (colors :variables
              ;; colors-enable-nyan-cat-progress-bar t)
      (go :variables
          go-tab-width 4
          gofmt-command "goimports")
-     (gtags :variables
-            gtags-enable-by-default t)
+     (gtags :variables gtags-enable-by-default t
+            :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
@@ -95,24 +103,24 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(magit-gh-pulls
-                                    ;; magit-gitflow git-gutter git-gutter-fringe
-                                                ;; evil
-                                                ;; evil-args evil-ediff evil-exchange
-                                                ;; evil-unimpaired
-                                                spaceline
-                                                ;; evil-indent-plus  evil-escape evil-lisp-state
-                                                ;; mode
-                                                holy-mode skewer-mode livid-mode ace-jump-mode clean-aindent-mode
-                                                ido-vertical-mode
-                                                ;; color
-                                                highlight-indentation volatile-highlights
-                                                ;; window
-                                                ;; smooth-scrolling spacemacs-purpose-popwin
-                                                ;; complete
-                                                auto-complete company-quickhelp auto-dictionary
-                                                ;; language
-                                                clang-format gh-md)
+   dotspacemacs-excluded-packages
+   '(magit-gh-pulls magit-gitflow org-projectile evil-mc realgud
+                    evil-args evil-ediff evil-exchange evil-unimpaired
+                    evil-indent-plus volatile-highlights
+                    spaceline holy-mode skewer-mode rainbow-delimiters
+                    highlight-indentation vi-tilde-fringe eyebrowse
+                    org-bullets smooth-scrolling org-repo-todo org-download
+                    livid-mode git-gutter evil-escape org-timer
+                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum symon
+                    ac-ispell ace-jump-mode auto-complete auto-dictionary
+                    clang-format define-word google-translate disaster epic
+                    fancy-battery org-present orgit orglue spacemacs-theme
+                    helm-flyspell flyspell-correct-helm clean-aindent-mode
+                    helm-c-yasnippet ace-jump-helm-line helm-make magithub
+                    helm-themes helm-swoop helm-spacemacs-help smeargle
+                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
