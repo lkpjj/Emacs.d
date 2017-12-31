@@ -26,6 +26,7 @@
     (progn
       (add-hook 'prog-mode-hook 'nlinum-mode)
       ;; (add-hook 'text-mode-hook 'nlinum-mode)
+      (setq nlinum-highlight-current-line t)
       (setq nlinum-format "%3d"))))
 
 
