@@ -1,4 +1,4 @@
-;;; config.el --- custom-layers layer config file for Spacemacs.
+;;; config.el --- kevin-programming-layer layer config file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -13,4 +13,7 @@
 
 (add-to-list 'load-path (expand-file-name  "extensions" dotspacemacs-directory))
 (add-to-list 'load-path (expand-file-name  "elisp" dotspacemacs-directory))
+
+(add-hook 'prog-mode-hook 'kevin/font-lock-comment-annotations)
+
 (require 'init-auto-save)

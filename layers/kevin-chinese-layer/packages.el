@@ -1,4 +1,4 @@
-;;; packages.el --- custom-chinese layer packages file for Spacemacs.
+;;; packages.el --- kevin-chinese-layer layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -11,14 +11,14 @@
 
 ;;; Commentary:
 
-(defconst custom-chinese-packages
+(defconst kevin-chinese-layer-packages
   '(
     youdao-dictionary
     pangu-spacing
     pyim
     ))
 
-(defun custom-chinese/init-youdao-dictionary ()
+(defun kevin-chinese-layer/init-youdao-dictionary ()
   (use-package youdao-dictionary
     :ensure t
     :config
@@ -32,7 +32,7 @@
             youdao-dictionary-use-chinese-word-segmentation t))))
 
 
-(defun custom-chinese/init-pyim ()
+(defun kevin-chinese-layer/init-pyim ()
   (use-package pyim
     :init
     :config
@@ -56,7 +56,7 @@
                     '(pyim-probe-program-mode))
       (evilified-state-evilify pyim-dm-mode pyim-dm-mode-map))))
 
-(defun custom-chinese/init-pangu-spacing ()
+(defun kevin-chinese-layer/init-pangu-spacing ()
   (use-package pangu-spacing
     :defer t
     :init (progn (global-pangu-spacing-mode 1)

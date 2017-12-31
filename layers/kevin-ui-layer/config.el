@@ -1,4 +1,4 @@
-;;; config.el --- custom-ui layer config file for Spacemacs.
+;;; config.el --- kevin-ui-layer layer config file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -12,7 +12,18 @@
 ;;; Commentary:
 
 ;; remove menu bar
-(setq menu-bar-mode nil)
+(tooltip-mode -1) ; relegate tooltips to echo area only
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(if (fboundp 'tool-bar-mode)   (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;; standardize default fringe width
+(defvar doom-fringe-size '4
+  "Default fringe width.")
+(if (fboundp 'fringe-mode) (fringe-mode doom-fringe-size))
+(setq linum-format "%4s ")
+
+
 
 ;; editor config
 (setq-default fill-column 80)
@@ -24,17 +35,6 @@
                    (abbreviate-file-name (buffer-file-name)) "%b"))))
 ;; which-func 设置
 (which-func-mode)
-(defun enable-which-func()
-  ;; 从mode line移除which-func
-  (setq-default mode-line-misc-info
-                (assq-delete-all 'which-func-mode mode-line-misc-info))
-  ;; 在header-line 显示which-func
-  (setq-default header-line-format
-                '((which-func-mode ("" which-func-format " ")))))
-;; 只在固定的mode中激活
-(add-hook 'prog-mode-hook 'enable-which-func)
-(add-hook 'text-mode-hook 'enable-which-func)
-(add-hook 'web-mode-hook 'enable-which-func)
 
 ;; UI
 (setq evil-normal-state-tag   (propertize "[N]" 'face '((:background "DarkGoldenrod2" :foreground "black")))
@@ -54,64 +54,6 @@
 (global-whitespace-mode t)
 (setq whitespace-style '(face tabs trailing tab-mark))
 
-;; 显示layout
-(defun my-update-persp-name ()
-  (when (bound-and-true-p persp-mode)
-    ;; There are multiple implementations of
-    ;; persp-mode with different APIs
-    (progn
-      (or (not (string= persp-nil-name (safe-persp-name (get-frame-persp))))
-          "Default")
-      (let ((name (safe-persp-name (get-frame-persp))))
-        (propertize (concat "[" name "] ")
-                    'face 'font-lock-preprocessor-face
-                    'help-echo "Current Layout name.")))))
-
-(setq my-flycheck-mode-line
-      '(:eval
-        (pcase flycheck-last-status-change
-          ((\` not-checked) nil)
-          ((\` no-checker) (propertize " -" 'face 'warning))
-          ((\` running) (propertize " ✷" 'face 'success))
-          ((\` errored) (propertize " !" 'face 'error))
-          ((\` finished)
-           (let* ((error-counts (flycheck-count-errors flycheck-current-errors))
-                  (no-errors (cdr (assq 'error error-counts)))
-                  (no-warnings (cdr (assq 'warning error-counts)))
-                  (face (cond (no-errors 'error)
-                              (no-warnings 'warning)
-                              (t 'success))))
-             (propertize (format "[%s/%s]" (or no-errors 0) (or no-warnings 0))
-                         'face face)))
-          ((\` interrupted) " -")
-          ((\` suspicious) '(propertize " ?" 'face 'warning)))))
-
-
-;; 简化 major-mode 的名字，替换表中没有的显示原名
-(defun my-simplify-major-mode-name ()
-  "Return simplifyed major mode name"
-  (let* ((major-name (format-mode-line "%m"))
-         (replace-table '(Emacs-Lisp "Elisp"
-                                     Spacemacs\ buffer "𝓢"
-                                     Python "Py"
-                                     ;; Shell ">"
-                                     Makrdown "MD"
-                                     GFM "𝓜"
-                                     Org "lrg"
-                                     Text "𝓣ext"
-                                     ;; Fundamental "ℱ"
-                                     ))
-         (replace-name (plist-get replace-table (intern major-name))))
-    (if replace-name replace-name major-name
-        )))
-
-(defun buffer-encoding-abbrev ()
-  "The line ending convention used in the buffer."
-  (let ((buf-coding (format "%s" buffer-file-coding-system)))
-    (if (string-match "\\(dos\\|unix\\|mac\\)" buf-coding)
-        (match-string 1 buf-coding)
-      buf-coding)))
-
 ;; 自定义mode-line样式
 ;; anzu 必须加载后才可以设置 anzu--mode-line-format
 (with-eval-after-load 'anzu
@@ -123,7 +65,7 @@
                             'face
                             'font-lock-type-face))
                   " "
-                  '(:eval (my-update-persp-name))
+                  '(:eval (kevin/update-persp-name))
 
                   anzu--mode-line-format
 
@@ -163,13 +105,13 @@
 
                   "["
                   ;; the current major mode for the buffer.
-                  '(:eval (propertize (my-simplify-major-mode-name) 'face 'font-lock-string-face
+                  '(:eval (propertize (kevin/simplify-major-mode-name) 'face 'font-lock-string-face
                                       'help-echo buffer-file-coding-system))
                   "]"
 
 
                   "%1"
-                  my-flycheck-mode-line
+                  kevin/flycheck-mode-line
                   "%1"
 
                   ;; line and column
@@ -181,14 +123,13 @@
                   ;; evil state
                   '(:eval evil-mode-line-tag)
 
-
                   ;; git info
                   '(:eval (when (> (window-width) 120)
                             `(vc-mode vc-mode)))
 
-                  ;; minor modes
-                  '(:eval (when (> (window-width) 90)
-                            minor-mode-alist))
+                  ;; ;; minor modes
+                  ;; '(:eval (when (> (window-width) 90)
+                  ;;           minor-mode-alist))
 
                   " "
                   ;; global-mode-string goes in mode-line-misc-info

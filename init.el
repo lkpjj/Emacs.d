@@ -37,11 +37,11 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      lua
-     html
+     ;; html
      python
      sql
      shell-scripts
-     javascript
+     ;; javascript
      rust
      helm
      (better-defaults :variables
@@ -58,7 +58,7 @@ values."
           git-gitter-use-fringe t)
      (shell :variables
             shell-default-shell 'eshell
-            shell-default-height 40
+            shell-default-height 30
             shell-default-position 'bottom
             shell-default-term-shell "/usr/local/bin/fish")
      (spell-checking :variables
@@ -86,7 +86,7 @@ values."
                treemacs-is-never-other-window t
                treemacs-position 'left)
      ;; 添加自定义layer
-     custom-layers)
+     kevin)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -98,17 +98,17 @@ values."
    dotspacemacs-excluded-packages '(magit-gh-pulls
                                     ;; magit-gitflow git-gutter git-gutter-fringe
                                                 ;; evil
-                                                evil-args evil-ediff evil-exchange
+                                                ;; evil-args evil-ediff evil-exchange
                                                 ;; evil-unimpaired
                                                 spaceline
-                                                evil-indent-plus  evil-escape evil-lisp-state
+                                                ;; evil-indent-plus  evil-escape evil-lisp-state
                                                 ;; mode
                                                 holy-mode skewer-mode livid-mode ace-jump-mode clean-aindent-mode
                                                 ido-vertical-mode
                                                 ;; color
                                                 highlight-indentation volatile-highlights
                                                 ;; window
-                                                smooth-scrolling spacemacs-purpose-popwin
+                                                ;; smooth-scrolling spacemacs-purpose-popwin
                                                 ;; complete
                                                 auto-complete company-quickhelp auto-dictionary
                                                 ;; language
@@ -164,7 +164,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -182,7 +182,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(sanityinc-tomorrow-night
+   dotspacemacs-themes '(
+                         sanityinc-tomorrow-night
+                         doom-tomorrow-night
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -235,7 +237,7 @@ values."
    dotspacemacs-display-default-layout t
    ;; If non nil then the last auto saved layouts are resume automatically upon
    ;; start. (default nil)
-   dotspacemacs-auto-resume-layouts t
+   dotspacemacs-auto-resume-layouts nil
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
@@ -333,7 +335,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -351,12 +353,11 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
-  ; (setq configuration-layer--elpa-archives
-  ;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-  ;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-  ;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
-  ;; (setq-default solarized-underline nil)
-  )
+   (setq configuration-layer--elpa-archives
+         '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+           ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+           ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")))
+   )
 
 (defun dotspacemacs/user-config ()
   )

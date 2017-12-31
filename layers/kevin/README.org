@@ -1,7 +1,7 @@
-#+TITLE: custom-better-defaults layer
+#+TITLE: kevin layer
 
 # The maximum height of the logo should be 200 pixels.
-[[img/custom-better-defaults.png]]
+[[img/custom-layers.png]]
 
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
@@ -10,11 +10,11 @@
 - [[#key-bindings][Key bindings]]
 
 * Description
-  主要包含自己对spacemacs的一些修改
-  - 移除一些不需要的package
-  - 增加一些需要用到的package
+  主要包含自己对 spacemacs 的一些修改
+  - 移除一些不需要的 package
+  - 增加一些需要用到的 package
   - 更改一些默认的配置
-  - 更改一些spacemacs定义的快捷键；添加一下自己常用的快捷键
+  - 更改一些 spacemacs 定义的快捷键；添加一下自己常用的快捷键
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to

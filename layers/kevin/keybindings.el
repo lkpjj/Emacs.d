@@ -1,4 +1,4 @@
-;;; keybindings.el --- custom-layers layer keybindings file for Spacemacs.
+;;; keybindings.el --- kevin layer keybindings file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -40,8 +40,8 @@
 (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-(spacemacs/set-leader-keys "jp" 'goto-match-parent)
-;; (spacemacs/set-leader-keys "jl" 'goto-line)
+(spacemacs/set-leader-keys "jp" 'kevin/goto-match-parent)
+(spacemacs/set-leader-keys "jl" 'goto-line)
 
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 (global-set-key (kbd "<f5>") 'run-current-file)
@@ -70,9 +70,13 @@
 (spacemacs/set-leader-keys "otm" 'toggle-major-mode)
 (spacemacs/set-leader-keys "otb" 'toggle-scroll-bar)
 (spacemacs/set-leader-keys "otw" 'toggle-word-wrap)
+;; open iterm2
+(spacemacs/set-leader-keys "oi" 'kevin/iterm-focus)
 
-(spacemacs/set-leader-keys "oi" 'iterm-focus)
 
 ;; flycheck error
 (spacemacs/set-leader-keys "en" 'flycheck-next-error)
 (spacemacs/set-leader-keys "ep" 'flycheck-previous-error)
+
+;; open org mode gtd.org
+(spacemacs/set-leader-keys "aof" 'kevin/open-org-gtd-file)

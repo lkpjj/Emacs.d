@@ -11,12 +11,6 @@
 
 ;;; Commentary:
 
-(defconst custom-ui-packages
+(defconst kevin-ui-layer-packages
   '(
-    anzu
-    ))
-
-(defun custom-ui-packages/init-anzu ()
-  (use-package anzu
-    :ensure t
     ))

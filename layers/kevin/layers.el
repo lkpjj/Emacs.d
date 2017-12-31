@@ -10,8 +10,8 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-                                      custom-ui
-                                      custom-better-defaults
-                                      custom-chinese
-                                      custom-packages
+                                      kevin-ui-layer
+                                      kevin-org-layer
+                                      kevin-chinese-layer
+                                      kevin-programming-layer
                                       ))
