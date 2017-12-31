@@ -13,4 +13,25 @@
 
 (defconst kevin-ui-layer-packages
   '(
+    (linum :excluded t)
+    (linum-relative :excluded t)
+    nlinum
+    window-numbering
     ))
+
+(defun kevin-ui-layer/init-nlinum ()
+  (use-package nlinum
+    :init
+    :config
+    (progn
+      (add-hook 'prog-mode-hook 'nlinum-mode)
+      ;; (add-hook 'text-mode-hook 'nlinum-mode)
+      (setq nlinum-format "%3d"))))
+
+
+(defun kevin-ui-layer/init-window-numbering ()
+  (use-package window-numbering
+    :config
+    (progn
+      (window-numbering-mode)
+     )))

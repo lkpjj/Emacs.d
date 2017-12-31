@@ -33,6 +33,7 @@
 (add-hook 'dired-mode-hook 'kevin/dired-mode-hook)
 (add-hook 'prog-mode-hook 'kevin/prog-mode-hook)
 (add-hook 'after-save-hook 'kevin/revert-buffer-no-confirm)
+
 ;; which func mode
 (add-hook 'prog-mode-hook 'enable-which-func)
 (add-hook 'text-mode-hook 'enable-which-func)

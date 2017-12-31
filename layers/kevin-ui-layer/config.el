@@ -17,13 +17,30 @@
 (scroll-bar-mode -1)
 (if (fboundp 'tool-bar-mode)   (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+
 ;; standardize default fringe width
-(defvar doom-fringe-size '4
+;; 更改边缘的厚度（默认为8像素）
+(defvar fringe-size '4
   "Default fringe width.")
-(if (fboundp 'fringe-mode) (fringe-mode doom-fringe-size))
-(setq linum-format "%4s ")
-
-
+(if (fboundp 'fringe-mode) (fringe-mode fringe-size))
+(define-fringe-bitmap 'right-curly-arrow
+  [#b00000000
+   #b00000000
+   #b00000000
+   #b00000000
+   #b01110000
+   #b00010000
+   #b00010000
+   #b00000000])
+(define-fringe-bitmap 'left-curly-arrow
+  [#b00000000
+   #b00001000
+   #b00001000
+   #b00001110
+   #b00000000
+   #b00000000
+   #b00000000
+   #b00000000])
 
 ;; editor config
 (setq-default fill-column 80)
@@ -109,17 +126,11 @@
                                       'help-echo buffer-file-coding-system))
                   "]"
 
-
                   "%1"
                   kevin/flycheck-mode-line
                   "%1"
 
-                  ;; line and column
-                  " (" ;; '%02' to set to 2 chars at least; prevents flickering
-                  (propertize "%02l" 'face 'font-lock-type-face) ","
-                  (propertize "%02c" 'face 'font-lock-type-face)
-                  ") "
-
+                  " "
                   ;; evil state
                   '(:eval evil-mode-line-tag)
 
@@ -131,13 +142,28 @@
                   ;; '(:eval (when (> (window-width) 90)
                   ;;           minor-mode-alist))
 
-                  " "
-                  ;; global-mode-string goes in mode-line-misc-info
-                  '(:eval (when (> (window-width) 120)
-                            mode-line-misc-info))
+                  (mode-line-fill 'mode-line 25)
 
-                  '(:eval (when (> (window-width) 120)
-                            (buffer-encoding-abbrev)))
+                  ;; line and column
+                  "(" ;; '%02' to set to 2 chars at least; prevents flickering
+                  (propertize "%02l" 'face 'font-lock-type-face) ","
+                  (propertize "%02c" 'face 'font-lock-type-face)
+                  ")"
+
+                  ;; global-mode-string goes in mode-line-misc-info
+                  ;; (mode-line-misc-info)
+                  ;; '(:eval (when (> (window-width) 120)
+                  ;;           mode-line-misc-info))
+
+                  ;; encoding abbrev
+                  " ["
+                  '(:eval (kevin/buffer-encoding-abbrev))
+                  "] "
 
                   mode-line-end-spaces
+                  ;; add the time, with the date and the emacs uptime in the tooltip
+                  '(:eval (propertize (format-time-string "%H:%M")
+                                      'help-echo
+                                      (concat (format-time-string "%c; ")
+                                              (emacs-uptime "Uptime:%hh"))))
                   )))

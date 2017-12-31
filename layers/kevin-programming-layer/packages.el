@@ -23,7 +23,7 @@
     :ensure t
     :config
     (progn
-            ;; If you enable global minor mode
+      ;; If you enable global minor mode
       (global-git-gutter-mode t)
       (set-face-foreground 'git-gutter-fr:modified "yellow")
       (set-face-foreground 'git-gutter-fr:added    "green")
@@ -31,6 +31,11 @@
 
 (defun kevin-programming-layer/init-fringe-helper ()
   (use-package fringe-helper
+    :commands (fringe-helper-define fringe-helper-convert)
+    :init
+    (unless (fboundp 'define-fringe-bitmap)
+      ;; doesn't exist in terminal Emacs; define it to prevent errors
+      (defun define-fringe-bitmap (&rest _)))
     :after (git-gutter-fringe)
     :config
     (progn

@@ -95,64 +95,6 @@
   ;; (kevin/growl-notification "Emacs Notification" "This is my message.")
   (kevin/growl-notification "Emacs Notification" "This is my sticky message." t))
 
-;; 显示layout
-(defun kevin/update-persp-name ()
-  (when (bound-and-true-p persp-mode)
-    ;; There are multiple implementations of
-    ;; persp-mode with different APIs
-    (progn
-      (or (not (string= persp-nil-name (safe-persp-name (get-frame-persp))))
-          "Default")
-      (let ((name (safe-persp-name (get-frame-persp))))
-        (propertize (concat "[" name "] ")
-                    'face 'font-lock-preprocessor-face
-                    'help-echo "Current Layout name.")))))
-
-(setq kevin/flycheck-mode-line
-      '(:eval
-        (pcase flycheck-last-status-change
-          ((\` not-checked) nil)
-          ((\` no-checker) (propertize " -" 'face 'warning))
-          ((\` running) (propertize " ✷" 'face 'success))
-          ((\` errored) (propertize " !" 'face 'error))
-          ((\` finished)
-           (let* ((error-counts (flycheck-count-errors flycheck-current-errors))
-                  (no-errors (cdr (assq 'error error-counts)))
-                  (no-warnings (cdr (assq 'warning error-counts)))
-                  (face (cond (no-errors 'error)
-                              (no-warnings 'warning)
-                              (t 'success))))
-             (propertize (format "[%s/%s]" (or no-errors 0) (or no-warnings 0))
-                         'face face)))
-          ((\` interrupted) " -")
-          ((\` suspicious) '(propertize " ?" 'face 'warning)))))
-
-
-;; 简化 major-mode 的名字，替换表中没有的显示原名
-(defun kevin/simplify-major-mode-name ()
-  "Return simplifyed major mode name"
-  (let* ((major-name (format-mode-line "%m"))
-         (replace-table '(Emacs-Lisp "Elisp"
-                                     Spacemacs\ buffer "𝓢"
-                                     Python "Py"
-                                     ;; Shell ">"
-                                     Makrdown "MD"
-                                     GFM "𝓜"
-                                     Org "lrg"
-                                     Text "𝓣ext"
-                                     ;; Fundamental "ℱ"
-                                     ))
-         (replace-name (plist-get replace-table (intern major-name))))
-    (if replace-name replace-name major-name
-        )))
-
-(defun kevin/buffer-encoding-abbrev ()
-  "The line ending convention used in the buffer."
-  (let ((buf-coding (format "%s" buffer-file-coding-system)))
-    (if (string-match "\\(dos\\|unix\\|mac\\)" buf-coding)
-        (match-string 1 buf-coding)
-      buf-coding)))
-
 ;; 快速打开org mode gtd file.
 (defun kevin/open-org-gtd-file()
   "Open org mode gtd.org file"
